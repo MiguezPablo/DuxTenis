@@ -1,0 +1,12 @@
+<div th:fragment="paricial-info" class="tooltip">
+    <H2>Received from server:</H2>
+<!--     
+    <span th:text="${msg}"></span>
+    
+-->    
+    <div class="grid-item"><p>[[${Jugador1.nombre}]]</p></div>
+    <div class="grid-item"><p>[[${Jugador1.saque} ? 'X' : '0']]</p></div>
+    <div class="grid-item"><p>[[${Jugador1.setsGanados}]]</div>
+    <div class="grid-item"><p>[[${Jugador1.juegosGanados}]]</div>
+    <div class="grid-item"><p>[[${Jugador1.puntosJuego}]]</div>
+</div>

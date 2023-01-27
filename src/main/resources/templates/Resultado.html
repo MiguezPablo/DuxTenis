@@ -1,0 +1,46 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/Resultado.css" th:href="@{/css/Resultado.css}"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Annie Use Your Telescope"
+      rel="stylesheet"
+    />
+    <title>Dux</title>
+  </head>
+<body>
+  <div class="game">
+    <div class="title">Ganador torneo: [[${partido.getGanadorPartido().nombre}]]</div>
+    <div class="flex-container">
+	  <div class="flex-row">
+		<div class="flex-item"> Jugador </div>
+		<div class="flex-item" th:each="set,iterador : ${setsJ1}">			
+			<div class="grid-item" th:text="Set + ' ' + ${iterador.index + 1}"></div>
+		</div>
+	  </div>
+	  <div class="flex-row">
+		<div class="flex-item"> [[${partido.jugadores.get(0).nombre}]] </div>
+      	<div class="flex-item" th:each="set,iterador : ${partido.getJugadores().get(0).sets}">
+			  [[${set > 6 ? "6 (" + (set - 6) + ")" : set}]]
+		  </div>
+	  </div>
+	  <div class="flex-row">
+		<div class="flex-item"> [[${partido.jugadores.get(1).nombre}]] </div>
+      	<div class="flex-item" th:each="set,iterador : ${partido.getJugadores().get(1).sets}">
+      		[[${set > 6 ? "6 (" + (set - 6) + ")" : set}]]
+      	</div>
+	  </div>
+      <div class="flex-row">
+		  <form action="/juego" method="get" class="flex-item-form">
+		    <button class="btn"> Revancha </button>
+    	  </form>
+    	  <form action="/formulario" method="get" class="flex-item-form">
+		    <button class="btn"> Volver </button>
+    	  </form>
+	  </div>
+    </div>
+  </div>
+</body>
+</html>

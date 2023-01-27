@@ -1,0 +1,56 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <link href="../static/css/Juego.css" th:href="@{/css/Juego.css}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Annie Use Your Telescope" rel="stylesheet"/>
+    <title>Dux</title>
+  </head>
+<body>
+  <div class="game">
+    <div class="title">Torneo [[${nombreTorneo}]]</div>
+    <div class="grid-container" id="eventCount">
+      <div class="grid-item"> Jugador </div>
+      <div class="grid-item"> Saque </div>
+      <div class="grid-item"> Sets </div>
+      <div class="grid-item"> Juegos </div>
+      <div class="grid-item"> Puntos </div>
+      
+      <div class="grid-item"><p>[[${Jugador1.nombre}]]</p></div>
+      <div class="grid-item"><p>[[${Jugador1.saque} ? 'X' : '0']]</p></div>
+      <div class="grid-item"><p>[[${Jugador1.setsGanados}]]</p></div>
+      <div class="grid-item">
+		  <p>[[${Jugador1.juegosGanados > 6 ? "6 (" + (Jugador1.juegosGanados - 6) + ")" : Jugador1.juegosGanados}]]</p>
+	  </div>
+      <div class="grid-item">
+		   <p>[[${Jugador1.puntosJuego > 40 ? "40 (" + (Jugador1.puntosJuego - 40) + ")" : Jugador1.puntosJuego}]]</p>
+	  </div>
+           
+      
+      <div class="grid-item"><p>[[${Jugador2.nombre}]]</p></div>
+      <div class="grid-item"><p>[[${Jugador2.saque} ? 'X' : '0']]</p></div>
+      <div class="grid-item"><p>[[${Jugador2.setsGanados}]]</p></div>
+      <div class="grid-item">
+		  <p>[[${Jugador2.juegosGanados > 6 ? "6 (" + (Jugador2.juegosGanados - 6) + ")" : Jugador2.juegosGanados}]]</p>
+	  </div>
+      <div class="grid-item">
+		  <p>[[${Jugador2.puntosJuego > 40 ?  "40 (" + (Jugador2.puntosJuego - 40) + ")" : Jugador2.puntosJuego}]]</p>
+	  </div>
+    </div>
+    <div id="finished">
+		<div th:if="${finalizado}" class="subtitle">
+			<form action="/resultado" method="get">
+      			<button class="btn"> Ver resultado </button>
+			</form>
+		</div>
+		<div class="subtitle" th:if="${!finalizado}">Partido en curso</div>
+	</div>
+    <script src="../static/js/Formulario.js" th:src="@{/js/Formulario.js}"></script>
+  </div>
+</body>
+</html>

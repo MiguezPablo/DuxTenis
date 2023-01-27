@@ -1,0 +1,57 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/Formulario.css" th:href="@{/css/Formulario.css}"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Annie Use Your Telescope"
+      rel="stylesheet"
+    />
+    <title>Dux</title>
+  </head>
+  <body>
+    <div class="main">
+      <form action="#" th:action="@{/formulario}" method="post" th:object="${partidoDTO}" class="form">
+	 	<div>Nombre Torneo: <input type="text" class="input" th:field="*{nombreTorneo}"/></div>
+        <div>Jugador 1: <input type="text" class="input" th:field="*{nombreJugador1}" /></div>
+        <div>Jugador 2: <input type="text" class="input" th:field="*{nombreJugador2}" /></div>
+        <div class="label">
+			<label for="sets">Cantidad Sets:</label>
+			<select name="sets" id="sets" th:field="*{cantidadSet}" class="selector">
+		  		<option value="3">3</option>
+		  		<option value="5">5</option>
+			</select>
+		</div>
+          <div>
+			  Habilidad Jugador 1:
+          <input
+            type="range"
+            value="50"
+            min="1"
+            max="100"
+            list="tickmarks"
+            class="range"
+            th:field="*{habilidadJ1}"
+            style="direction: rtl"
+          />: Habilidad Jugador 2
+          </div>
+          <datalist id="tickmarks">
+          <option value="0">
+          <option value="10">
+          <option value="20">
+          <option value="30">
+          <option value="40">
+          <option value="50">
+          <option value="60">
+          <option value="70">
+          <option value="80">
+          <option value="90">
+          <option value="100">
+        </datalist>
+        <button type="submit" class="btn"> Enviar </button>
+      </form>
+	</div>
+    </div>
+  </body>
+</html>
